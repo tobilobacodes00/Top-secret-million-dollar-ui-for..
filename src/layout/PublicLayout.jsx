@@ -116,92 +116,71 @@ const PublicLayout = ({ children }) => {
       <main className="pt-16">{children}</main>
 
       {/* Footer */}
-      <footer className="bg-gray-950 text-white py-16 border-t border-gray-800">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
-            <div className="col-span-1 md:col-span-2">
-              <div className="text-2xl font-bold text-purple-500 mb-4">Elite Trader</div>
-              <p className="text-gray-400 mb-6 max-w-md">
-                The premier cryptocurrency trading platform for professionals and beginners alike. Join thousands of
-                successful traders using our advanced AI-powered tools.
-              </p>
-              <div className="flex space-x-4">
-                <a href="#" className="bg-gray-800 hover:bg-purple-600 p-3 rounded-full transition-colors">
-                  <Facebook className="w-5 h-5" />
-                </a>
-                <a href="#" className="bg-gray-800 hover:bg-purple-600 p-3 rounded-full transition-colors">
-                  <Twitter className="w-5 h-5" />
-                </a>
-                <a href="#" className="bg-gray-800 hover:bg-purple-600 p-3 rounded-full transition-colors">
-                  <Instagram className="w-5 h-5" />
-                </a>
-                <a href="#" className="bg-gray-800 hover:bg-purple-600 p-3 rounded-full transition-colors">
-                  <Youtube className="w-5 h-5" />
-                </a>
-              </div>
-            </div>
-
-            <div>
-              <h3 className="text-lg font-semibold mb-4 text-white">Platform</h3>
-              <ul className="space-y-2">
-                <li>
-                  <Link to="/about" className="text-gray-400 hover:text-purple-400 transition-colors">
-                    About Us
-                  </Link>
-                </li>
-                <li>
-                  <Link to="/pricing" className="text-gray-400 hover:text-purple-400 transition-colors">
-                    Pricing
-                  </Link>
-                </li>
-                <li>
-                  <Link to="/contact" className="text-gray-400 hover:text-purple-400 transition-colors">
-                    Contact
-                  </Link>
-                </li>
-                <li>
-                  <a href="#" className="text-gray-400 hover:text-purple-400 transition-colors">
-                    Help Center
-                  </a>
-                </li>
-              </ul>
-            </div>
-
-            <div>
-              <h3 className="text-lg font-semibold mb-4 text-white">Legal</h3>
-              <ul className="space-y-2">
-                <li>
-                  <a href="#" className="text-gray-400 hover:text-purple-400 transition-colors">
-                    Privacy Policy
-                  </a>
-                </li>
-                <li>
-                  <a href="#" className="text-gray-400 hover:text-purple-400 transition-colors">
-                    Terms of Service
-                  </a>
-                </li>
-                <li>
-                  <a href="#" className="text-gray-400 hover:text-purple-400 transition-colors">
-                    Risk Disclosure
-                  </a>
-                </li>
-                <li>
-                  <a href="#" className="text-gray-400 hover:text-purple-400 transition-colors">
-                    Compliance
-                  </a>
-                </li>
-              </ul>
-            </div>
-          </div>
-
-          <div className="border-t border-gray-800 mt-12 pt-8 text-center">
-            <p className="text-gray-400 text-sm">
-              © 2025 Elite Trader Inc. All rights reserved. Licensed and regulated financial services.
+      <footer className="bg-gray-950 text-white py-12 border-t border-gray-800">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-8">
+          {/* Company Info */}
+          <div className="flex-1 text-center md:text-left">
+            <h2 className="text-2xl font-extrabold mb-2">
+              <span className="text-white">Elite</span>
+              <span className="text-purple-400">Trader</span>
+            </h2>
+            <p className="text-gray-400 text-sm max-w-sm mx-auto md:mx-0">
+              The premier cryptocurrency trading platform for professionals and beginners.
             </p>
           </div>
+
+          {/* Social Icons */}
+          <div className="flex justify-center md:justify-start space-x-5 mt-4 md:mt-0">
+            <a href="#" aria-label="Facebook" className="text-gray-400 hover:text-purple-400 transition-colors duration-300">
+              <Facebook className="w-5 h-5" />
+            </a>
+            <a href="#" aria-label="Twitter" className="text-gray-400 hover:text-purple-400 transition-colors duration-300">
+              <Twitter className="w-5 h-5" />
+            </a>
+            <a href="#" aria-label="Instagram" className="text-gray-400 hover:text-purple-400 transition-colors duration-300">
+              <Instagram className="w-5 h-5" />
+            </a>
+            <a href="#" aria-label="YouTube" className="text-gray-400 hover:text-purple-400 transition-colors duration-300">
+              <Youtube className="w-5 h-5" />
+            </a>
+          </div>
+
+          {/* Spacer */}
+          <div className="hidden lg:block lg:flex-1"></div>
+
+          {/* Links */}
+          <div className="flex-1 text-center md:text-right">
+            <div className="flex flex-col space-y-2 text-sm">
+              <a href="#about" className="text-gray-400 hover:text-purple-400 transition-colors duration-300">
+                About Us
+              </a>
+              <a href="#pricing" className="text-gray-400 hover:text-purple-400 transition-colors duration-300">
+                Pricing
+              </a>
+              <a href="#contact" className="text-gray-400 hover:text-purple-400 transition-colors duration-300">
+                Contact
+              </a>
+            </div>
+          </div>
         </div>
-      </footer>
-    </div>
+
+        {/* Legal and Copyright Section */}
+        <div className="mt-8 pt-6 border-t border-gray-800 text-xs flex flex-col md:flex-row items-center justify-between space-y-3 md:space-y-0">
+          <p className="text-gray-500 text-center md:text-left">
+            © 2025 Elite Trader Inc. All rights reserved.
+          </p>
+          <div className="flex space-x-4 text-gray-500">
+            <a href="#" className="hover:text-purple-400 transition-colors duration-300">
+              Privacy Policy
+            </a>
+            <a href="#" className="hover:text-purple-400 transition-colors duration-300">
+              Risk Disclosure
+            </a>
+          </div>
+        </div>
+      </div>
+    </footer>
   )
 }
 
