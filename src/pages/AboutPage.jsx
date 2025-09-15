@@ -284,7 +284,7 @@ const AboutPage = () => {
             </p>
             <div className="pt-2 flex items-center justify-center">
                 <Link
-                  to="/auth/register">
+                  to="/signin">
               <button className="bg-gradient-to-r from-purple-600 to-purple-700 hover:from-purple-500 hover:to-purple-600 text-white font-medium py-3 px-8 rounded-full text-base transition-all duration-300 shadow-lg hover:shadow-purple-500/25">
                 Start Trading
               </button>
