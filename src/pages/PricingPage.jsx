@@ -274,7 +274,7 @@ const PricingPage = () => {
             </p>
             <div className="pt-4">
               <Link
-                to="/register"
+                to="/signin"
                 className="inline-block bg-gradient-to-r from-purple-600 to-purple-700 hover:from-purple-500 hover:to-purple-600 text-white font-medium py-3 px-8 rounded-full text-lg transition-all duration-300 shadow-lg hover:shadow-purple-500/25"
               >
                 Start Trading

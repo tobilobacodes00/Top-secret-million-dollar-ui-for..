@@ -112,7 +112,7 @@ export default function TradingPlatformLandingPage() {
                 </p>
                 <div className="flex flex-col sm:flex-row gap-4">
                   <Link
-                                    to="/auth/register">
+                                    to="/signin">
                   <button  className="bg-gradient-to-r from-purple-600 to-purple-700 hover:from-purple-500 hover:to-purple-600 text-white font-medium py-4 px-12 rounded-full text-lg transition-all duration-300 shadow-lg hover:shadow-purple-500/25">
                     Start Trading Now
                   </button>
@@ -199,7 +199,7 @@ export default function TradingPlatformLandingPage() {
                   </div>
                 </div>
                 <Link
-                                    to="/auth/register">
+                                    to="/signin">
                 <button className="bg-gradient-to-r from-purple-600 to-purple-700 hover:from-purple-500 hover:to-purple-600 text-white font-medium py-4 px-12 rounded-full text-lg transition-all duration-300 shadow-lg hover:shadow-purple-500/25">
                   Get Started Free
                 </button>
@@ -412,7 +412,7 @@ export default function TradingPlatformLandingPage() {
                   for both novice and experienced traders looking to maximize their returns in the digital asset space.
                 </p>
                 <Link
-                                    to="/auth/register">
+                                    to="/signin">
                 <button className="bg-gradient-to-r from-purple-600 to-purple-700 hover:from-purple-500 hover:to-purple-600 text-white font-medium py-4 px-12 rounded-full text-lg transition-all duration-300 shadow-lg hover:shadow-purple-500/25">
                   Create Account
                 </button>
@@ -466,7 +466,7 @@ export default function TradingPlatformLandingPage() {
       
       <div className="pt-8">
         <Link
-                                    to="/auth/register">
+                                    to="/signin">
         <button className="bg-gradient-to-r from-purple-600 to-purple-700 hover:from-purple-500 hover:to-purple-600 text-white font-medium py-4 px-12 rounded-full text-lg transition-all duration-300 shadow-lg hover:shadow-purple-500/25">
           Start Trading
         </button>
