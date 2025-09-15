@@ -158,7 +158,7 @@ const PublicLayout = ({ children }) => {
                 <a href="#contact" className="text-gray-400 hover:text-purple-400 transition-colors duration-300">
                   Contact
                 </a>
-                <a href="#" className="text-gray-400 hover:text-purple-400 transition-colors duration-300">
+                <a href="#contact" className="text-gray-400 hover:text-purple-400 transition-colors duration-300">
                   Help Center
                 </a>
               </div>
