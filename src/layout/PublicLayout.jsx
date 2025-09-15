@@ -149,16 +149,16 @@ const PublicLayout = ({ children }) => {
             {/* Links */}
             <div className="flex-1 text-center md:text-right">
               <div className="flex flex-col space-y-2 text-sm">
-                <Link href="/about" className="text-gray-400 hover:text-purple-400 transition-colors duration-300">
+                <Link to="/about" className="text-gray-400 hover:text-purple-400 transition-colors duration-300">
                   About Us
                 </Link>
-                <Link href="/pricing" className="text-gray-400 hover:text-purple-400 transition-colors duration-300">
+                <Link to="/pricing" className="text-gray-400 hover:text-purple-400 transition-colors duration-300">
                   Pricing
                 </Link>
-                <Link href="/contact" className="text-gray-400 hover:text-purple-400 transition-colors duration-300">
+                <Link to="/contact" className="text-gray-400 hover:text-purple-400 transition-colors duration-300">
                   Contact
                 </Link>
-                <Link href="/contact" className="text-gray-400 hover:text-purple-400 transition-colors duration-300">
+                <Link to="/contact" className="text-gray-400 hover:text-purple-400 transition-colors duration-300">
                   Help Center
                 </Link>
               </div>
