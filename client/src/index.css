@@ -1,6 +1,18 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@600;700&display=swap');
+
 @import 'tailwindcss';
+
+
 
 html, body {
   overflow-x: hidden;
+  scroll-behavior: smooth;
+  }
+
+  p {
+  font-family: 'Inter', sans-serif;
 }
 
+h1 {
+  font-family: 'Space Grotesk', sans-serif;
+}
