@@ -1,19 +1,22 @@
-"use client"
+"use client";
 
-import { useState } from "react"
-import { Link, useLocation } from "react-router-dom"
-import { Facebook, Twitter, Instagram, Youtube } from "lucide-react"
+import { useState } from "react";
+import { Link, useLocation } from "react-router-dom";
+import { Facebook, Twitter, Instagram, Youtube } from "lucide-react";
+import { useAuthStore } from "../stores/getAuthStore";
 
 const PublicLayout = ({ children }) => {
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
-  const location = useLocation()
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const location = useLocation();
+  const token = localStorage.getItem("token");
+  const { logout } = useAuthStore();
 
   const navigation = [
     { name: "Home", href: "/" },
     { name: "About", href: "/about" },
     { name: "Pricing", href: "/pricing" },
     { name: "Contact", href: "/contact" },
-  ]
+  ];
 
   return (
     <div className="min-h-screen bg-gray-950 text-gray-300">
@@ -24,7 +27,9 @@ const PublicLayout = ({ children }) => {
             <div className="flex items-center justify-between h-16">
               {/* Logo */}
               <Link to="/" className="flex items-center">
-                <div className="text-2xl font-bold text-purple-500">Elite Trader</div>
+                <div className="text-2xl font-bold text-purple-500">
+                  Elite Trader
+                </div>
               </Link>
 
               {/* Desktop Navigation */}
@@ -34,7 +39,9 @@ const PublicLayout = ({ children }) => {
                     key={item.name}
                     to={item.href}
                     className={`text-sm font-medium transition-colors ${
-                      location.pathname === item.href ? "text-purple-400" : "text-gray-300 hover:text-purple-400"
+                      location.pathname === item.href
+                        ? "text-purple-400"
+                        : "text-gray-300 hover:text-purple-400"
                     }`}
                   >
                     {item.name}
@@ -44,15 +51,28 @@ const PublicLayout = ({ children }) => {
 
               {/* Auth Buttons */}
               <div className="hidden md:flex items-center space-x-4">
-                <Link to="/auth/login" className="text-gray-300 hover:text-purple-400 font-medium transition-colors">
-                  Sign In
-                </Link>
-                <Link
-                  to="/signin"
-                  className="bg-gradient-to-r from-purple-600 to-purple-700 hover:from-purple-500 hover:to-purple-600 text-white font-medium py-2 px-10 rounded-full text-lg transition-all duration-300 shadow-lg hover:shadow-purple-500/25"
-                >
-                  Get Started
-                </Link>
+                {token ? (
+                  <div>user</div>
+                ) : (
+                  <Link
+                    to="/signin"
+                    className="text-gray-300 hover:text-purple-400 font-medium transition-colors"
+                  >
+                    Sign In
+                  </Link>
+                )}
+                {token ? (
+                  <div className="cursor-pointer" onClick={logout}>
+                    logout
+                  </div>
+                ) : (
+                  <Link
+                    to="/signin"
+                    className="bg-gradient-to-r from-purple-600 to-purple-700 hover:from-purple-500 hover:to-purple-600 text-white font-medium py-2 px-10 rounded-full text-lg transition-all duration-300 shadow-lg hover:shadow-purple-500/25"
+                  >
+                    Get Started
+                  </Link>
+                )}
               </div>
 
               {/* Mobile menu button */}
@@ -60,12 +80,21 @@ const PublicLayout = ({ children }) => {
                 onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
                 className="md:hidden p-2 rounded-md text-gray-300 hover:bg-gray-800"
               >
-                <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <svg
+                  className="w-6 h-6"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
                   <path
                     strokeLinecap="round"
                     strokeLinejoin="round"
                     strokeWidth="2"
-                    d={mobileMenuOpen ? "M6 18L18 6M6 6l12 12" : "M4 6h16M4 12h16M4 18h16"}
+                    d={
+                      mobileMenuOpen
+                        ? "M6 18L18 6M6 6l12 12"
+                        : "M4 6h16M4 12h16M4 18h16"
+                    }
                   />
                 </svg>
               </button>
@@ -126,22 +155,39 @@ const PublicLayout = ({ children }) => {
                 <span className="text-purple-400">Trader</span>
               </h2>
               <p className="text-gray-400 text-sm max-w-sm mx-auto md:mx-0">
-                The premier cryptocurrency trading platform for professionals and beginners.
+                The premier cryptocurrency trading platform for professionals
+                and beginners.
               </p>
             </div>
 
             {/* Social Icons */}
             <div className="flex justify-center md:justify-start space-x-5 mt-4 md:mt-0">
-              <a href="#" aria-label="Facebook" className="text-gray-400 hover:text-purple-400 transition-colors duration-300">
+              <a
+                href="#"
+                aria-label="Facebook"
+                className="text-gray-400 hover:text-purple-400 transition-colors duration-300"
+              >
                 <Facebook className="w-5 h-5" />
               </a>
-              <a href="#" aria-label="Twitter" className="text-gray-400 hover:text-purple-400 transition-colors duration-300">
+              <a
+                href="#"
+                aria-label="Twitter"
+                className="text-gray-400 hover:text-purple-400 transition-colors duration-300"
+              >
                 <Twitter className="w-5 h-5" />
               </a>
-              <a href="#" aria-label="Instagram" className="text-gray-400 hover:text-purple-400 transition-colors duration-300">
+              <a
+                href="#"
+                aria-label="Instagram"
+                className="text-gray-400 hover:text-purple-400 transition-colors duration-300"
+              >
                 <Instagram className="w-5 h-5" />
               </a>
-              <a href="#" aria-label="YouTube" className="text-gray-400 hover:text-purple-400 transition-colors duration-300">
+              <a
+                href="#"
+                aria-label="YouTube"
+                className="text-gray-400 hover:text-purple-400 transition-colors duration-300"
+              >
                 <Youtube className="w-5 h-5" />
               </a>
             </div>
@@ -149,16 +195,28 @@ const PublicLayout = ({ children }) => {
             {/* Links */}
             <div className="flex-1 text-center md:text-right">
               <div className="flex flex-col space-y-2 text-sm">
-                <Link to="/about" className="text-gray-400 hover:text-purple-400 transition-colors duration-300">
+                <Link
+                  to="/about"
+                  className="text-gray-400 hover:text-purple-400 transition-colors duration-300"
+                >
                   About Us
                 </Link>
-                <Link to="/pricing" className="text-gray-400 hover:text-purple-400 transition-colors duration-300">
+                <Link
+                  to="/pricing"
+                  className="text-gray-400 hover:text-purple-400 transition-colors duration-300"
+                >
                   Pricing
                 </Link>
-                <Link to="/contact" className="text-gray-400 hover:text-purple-400 transition-colors duration-300">
+                <Link
+                  to="/contact"
+                  className="text-gray-400 hover:text-purple-400 transition-colors duration-300"
+                >
                   Contact
                 </Link>
-                <Link to="/contact" className="text-gray-400 hover:text-purple-400 transition-colors duration-300">
+                <Link
+                  to="/contact"
+                  className="text-gray-400 hover:text-purple-400 transition-colors duration-300"
+                >
                   Help Center
                 </Link>
               </div>
@@ -171,10 +229,16 @@ const PublicLayout = ({ children }) => {
               © 2025 Elite Trader Inc. All rights reserved.
             </p>
             <div className="flex space-x-4 text-gray-500">
-              <a href="#" className="hover:text-purple-400 transition-colors duration-300">
+              <a
+                href="#"
+                className="hover:text-purple-400 transition-colors duration-300"
+              >
                 Privacy Policy
               </a>
-              <a href="#" className="hover:text-purple-400 transition-colors duration-300">
+              <a
+                href="#"
+                className="hover:text-purple-400 transition-colors duration-300"
+              >
                 Risk Disclosure
               </a>
             </div>
@@ -182,7 +246,7 @@ const PublicLayout = ({ children }) => {
         </div>
       </footer>
     </div>
-  )
-}
+  );
+};
 
-export default PublicLayout
+export default PublicLayout;
