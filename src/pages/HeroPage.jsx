@@ -6,7 +6,7 @@ import { motion } from "framer-motion"
 import { TrendingUp, Shield, Bot } from "lucide-react"
 import PublicLayout from "../layout/PublicLayout"
 
-// Smooth scroll animation variants
+
 const fadeInUp = {
   initial: { opacity: 0, y: 60 },
   animate: { opacity: 1, y: 0 },
@@ -92,9 +92,11 @@ export default function TradingPlatformLandingPage() {
 
   return (
     <PublicLayout>
-      <div className="min-h-screen bg-gray-950 text-gray-300">
+      <div className="min-h-screen bg-black text-gray-300">
         
-         <section className="pt-8 pb-20 px-4 sm:px-6 lg:px-8">
+        
+         <section className="pt-8 pb-20 px-4 bg-gradient-to-t from-gray-800 via-gray-900 to-black sm:px-6 lg:px-8">
+           
           <div className="max-w-7xl mx-auto">
             <div className="grid lg:grid-cols-2 gap-12 items-center">
               <motion.div
@@ -135,7 +137,7 @@ export default function TradingPlatformLandingPage() {
                 className="relative"
               >
                 <img
-                  src="/Bitcoin (1).gif"
+                  src="/Bitcoin-amico.svg"
                   alt="Crypto trading dashboard visualization"
                   className="w-full h-auto rounded-lg"
                 />

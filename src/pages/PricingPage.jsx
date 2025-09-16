@@ -2,7 +2,7 @@
 
 import { motion } from "framer-motion"
 import { Link } from "react-router-dom"
-import { Check, Star, Zap, Crown } from "lucide-react"
+import { Check, Star, Zap, Crown, Shield, Users, TrendingUp, Award, Target } from "lucide-react"
 import PublicLayout from "../layout/PublicLayout"
 
 
@@ -126,13 +126,13 @@ const PricingPage = () => {
 
   return (
     <PublicLayout>
-     <div className="min-h-screen bg-gray-950 text-gray-300 overflow-hidden font-inter">
+     <div className="min-h-screen bg-black text-gray-300 overflow-hidden font-inter">
       {/* Background for a simple aesthetic */}
       <div className="absolute inset-0 z-0 bg-black opacity-60"></div>
 
       {/* Hero Section */}
       <section className="py-16 px-4 sm:px-6 lg:px-8 relative z-10 text-center">
-       
+        
           <h1 className="text-3xl lg:text-5xl font-bold text-white leading-tight">
             Elevate Your <span className="text-purple-500">Trading Game</span>
           </h1>

@@ -4,6 +4,7 @@ import { useState } from "react"
 import { Link, useLocation } from "react-router-dom"
 import { Facebook, Twitter, Instagram, Youtube } from "lucide-react"
 
+
 const PublicLayout = ({ children }) => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
   const location = useLocation()
@@ -16,101 +17,134 @@ const PublicLayout = ({ children }) => {
   ]
 
   return (
-    <div className="min-h-screen bg-gray-950 text-gray-300">
+    <div className="min-h-screen bg-black text-gray-300">
       {/* Header */}
-      <header className="fixed inset-x-0 top-0 z-50">
-        <div className="bg-gray-95/90 backdrop-blur-md ">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="flex items-center justify-between h-16">
-              {/* Logo */}
-              <Link to="/" className="flex items-center">
-                <div className="text-2xl font-bold text-purple-500">Elite Trader</div>
-              </Link>
+   <header className="fixed top-6 left-1/2 -translate-x-1/2 z-50 w-[90%] max-w-7xl">
+  <div
+    className="rounded-2xl shadow-lg border border-white/10 relative overflow-hidden"
+    style={{
+      backdropFilter: "url(#glass-header-filter)",
+      WebkitBackdropFilter: "url(#glass-header-filter)"
+    }}
+  >
+    {/* SVG Filter Definition */}
+    <svg className="hidden">
+      <defs>
+        <filter id="glass-header-filter" x="0" y="0" width="100%" height="100%">
+          <feTurbulence type="fractalNoise" baseFrequency="0.02" numOctaves="3" result="turb" />
+          <feDisplacementMap in="SourceGraphic" in2="turb" scale="20" xChannelSelector="R" yChannelSelector="G" />
+          <feGaussianBlur stdDeviation="8" />
+        </filter>
+      </defs>
+    </svg>
 
-              {/* Desktop Navigation */}
-              <nav className="hidden md:flex space-x-8">
-                {navigation.map((item) => (
-                  <Link
-                    key={item.name}
-                    to={item.href}
-                    className={`text-sm font-medium transition-colors ${
-                      location.pathname === item.href ? "text-purple-400" : "text-gray-300 hover:text-purple-400"
-                    }`}
-                  >
-                    {item.name}
-                  </Link>
-                ))}
-              </nav>
+    <div className="bg-gray-900/50 backdrop-blur-md px-4 sm:px-6 lg:px-8 rounded-2xl">
+      <div className="flex items-center justify-between h-16">
+        {/* Logo */}
+        <Link to="/" className="flex items-center">
+          <div className="text-2xl font-bold text-purple-500">Elite Trader</div>
+        </Link>
 
-              {/* Auth Buttons */}
-              <div className="hidden md:flex items-center space-x-4">
-                <Link to="/auth/login" className="text-gray-300 hover:text-purple-400 font-medium transition-colors">
-                  Sign In
-                </Link>
-                <Link
-                  to="/signin"
-                  className="bg-gradient-to-r from-purple-600 to-purple-700 hover:from-purple-500 hover:to-purple-600 text-white font-medium py-2 px-10 rounded-full text-lg transition-all duration-300 shadow-lg hover:shadow-purple-500/25"
-                >
-                  Get Started
-                </Link>
-              </div>
+        {/* Desktop Navigation */}
+        <nav className="hidden md:flex space-x-8">
+          {navigation.map((item) => (
+            <Link
+              key={item.name}
+              to={item.href}
+              className={`text-sm font-medium transition-colors ${
+                location.pathname === item.href
+                  ? "text-purple-400"
+                  : "text-gray-300 hover:text-purple-400"
+              }`}
+            >
+              {item.name}
+            </Link>
+          ))}
+        </nav>
 
-              {/* Mobile menu button */}
-              <button
-                onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-                className="md:hidden p-2 rounded-md text-gray-300 hover:bg-gray-800"
-              >
-                <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth="2"
-                    d={mobileMenuOpen ? "M6 18L18 6M6 6l12 12" : "M4 6h16M4 12h16M4 18h16"}
-                  />
-                </svg>
-              </button>
-            </div>
+        {/* Auth Buttons */}
+        <div className="hidden md:flex items-center space-x-4">
+          <Link
+            to="/auth/login"
+            className="text-gray-300 hover:text-purple-400 font-medium transition-colors"
+          >
+            Sign In
+          </Link>
+          <Link
+            to="/signin"
+            className="bg-gradient-to-r from-purple-600 to-purple-700 hover:from-purple-500 hover:to-purple-600 text-white font-medium py-2 px-10 rounded-full text-lg transition-all duration-300 shadow-lg hover:shadow-purple-500/25"
+          >
+            Get Started
+          </Link>
+        </div>
 
-            {/* Mobile menu */}
-            {mobileMenuOpen && (
-              <div className="md:hidden py-4 border-t border-gray-800">
-                <div className="flex flex-col space-y-2">
-                  {navigation.map((item) => (
-                    <Link
-                      key={item.name}
-                      to={item.href}
-                      className={`px-3 py-2 rounded-md text-sm font-medium transition-colors ${
-                        location.pathname === item.href
-                          ? "text-purple-400 bg-gray-800"
-                          : "text-gray-300 hover:text-purple-400 hover:bg-gray-800"
-                      }`}
-                      onClick={() => setMobileMenuOpen(false)}
-                    >
-                      {item.name}
-                    </Link>
-                  ))}
-                  <div className="pt-4 border-t border-gray-800 mt-4">
-                    <Link
-                      to="/auth/login"
-                      className="block px-3 py-2 text-gray-300 hover:text-purple-400 font-medium"
-                      onClick={() => setMobileMenuOpen(false)}
-                    >
-                      Sign In
-                    </Link>
-                    <Link
-                      to="/signin"
-                      className="block mt-2 bg-purple-600 hover:bg-purple-700 text-white px-3 py-2 rounded-md font-semibold text-center"
-                      onClick={() => setMobileMenuOpen(false)}
-                    >
-                      Get Started
-                    </Link>
-                  </div>
-                </div>
-              </div>
-            )}
+        {/* Mobile menu button */}
+        <button
+          onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+          className="md:hidden p-2 rounded-md text-gray-300 hover:bg-gray-800"
+        >
+          <svg
+            className="w-6 h-6"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth="2"
+              d={
+                mobileMenuOpen
+                  ? "M6 18L18 6M6 6l12 12"
+                  : "M4 6h16M4 12h16M4 18h16"
+              }
+            />
+          </svg>
+        </button>
+      </div>
+    </div>
+
+    {/* Mobile menu */}
+    {mobileMenuOpen && (
+      <div className="md:hidden py-4 border-t border-gray-800 rounded-b-2xl bg-gray-900/70 backdrop-blur-md">
+        <div className="flex flex-col space-y-2">
+          {navigation.map((item) => (
+            <Link
+              key={item.name}
+              to={item.href}
+              className={`px-3 py-2 rounded-md text-sm font-medium transition-colors ${
+                location.pathname === item.href
+                  ? "text-purple-400 bg-gray-800"
+                  : "text-gray-300 hover:text-purple-400 hover:bg-gray-800"
+              }`}
+              onClick={() => setMobileMenuOpen(false)}
+            >
+              {item.name}
+            </Link>
+          ))}
+          <div className="pt-4 border-t border-gray-800 mt-4">
+            <Link
+              to="/auth/login"
+              className="block px-3 py-2 text-gray-300 hover:text-purple-400 font-medium"
+              onClick={() => setMobileMenuOpen(false)}
+            >
+              Sign In
+            </Link>
+            <Link
+              to="/signin"
+              className="block mt-2 bg-purple-600 hover:bg-purple-700 text-white px-3 py-2 rounded-md font-semibold text-center"
+              onClick={() => setMobileMenuOpen(false)}
+            >
+              Get Started
+            </Link>
           </div>
         </div>
-      </header>
+      </div>
+    )}
+  </div>
+</header>
+
+
 
       {/* Main Content */}
       <main className="pt-16">{children}</main>
