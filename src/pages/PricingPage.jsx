@@ -253,36 +253,6 @@ const PricingPage = () => {
         </div>
       </section>
 
-      {/* CTA Section */}
-      <section className="py-16 px-4 sm:px-6 lg:px-8 bg-black/50 relative text-center z-10">
-        <div className="max-w-3xl mx-auto">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            viewport={{ once: true }}
-            className="space-y-6"
-          >
-            <h2 className="text-4xl lg:text-5xl font-light text-white leading-tight">
-              Ready to Join the
-              <span className="block text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-purple-600 font-normal">
-                Elite?
-              </span>
-            </h2>
-            <p className="text-lg text-gray-400 max-w-2xl mx-auto font-light">
-              Transform your trading with professional-grade tools and AI-powered strategies.
-            </p>
-            <div className="pt-4">
-              <Link
-                to="/signin"
-                className="inline-block bg-gradient-to-r from-purple-600 to-purple-700 hover:from-purple-500 hover:to-purple-600 text-white font-medium py-3 px-8 rounded-full text-lg transition-all duration-300 shadow-lg hover:shadow-purple-500/25"
-              >
-                Start Trading
-              </Link>
-            </div>
-          </motion.div>
-        </div>
-      </section>
     </div>
     </PublicLayout>
   )

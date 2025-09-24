@@ -18,90 +18,73 @@ const PublicLayout = ({ children }) => {
 
   return (
     <div className="min-h-screen bg-black text-gray-300">
-      {/* Header */}
-   <header className="fixed top-6 left-1/2 -translate-x-1/2 z-50 w-[90%] max-w-7xl">
+     {/* Header */}
+<header className="fixed top-6 left-1/2 -translate-x-1/2 z-50 w-[90%] max-w-7xl">
   <div
-    className="rounded-2xl shadow-lg border border-white/10 relative overflow-hidden"
-    style={{
-      backdropFilter: "url(#glass-header-filter)",
-      WebkitBackdropFilter: "url(#glass-header-filter)"
-    }}
+    className="rounded-2xl shadow-lg border border-white/10 relative overflow-hidden bg-gray-900/50 backdrop-blur-md"
   >
-    {/* SVG Filter Definition */}
-    <svg className="hidden">
-      <defs>
-        <filter id="glass-header-filter" x="0" y="0" width="100%" height="100%">
-          <feTurbulence type="fractalNoise" baseFrequency="0.02" numOctaves="3" result="turb" />
-          <feDisplacementMap in="SourceGraphic" in2="turb" scale="20" xChannelSelector="R" yChannelSelector="G" />
-          <feGaussianBlur stdDeviation="8" />
-        </filter>
-      </defs>
-    </svg>
+    <div className="flex items-center justify-between h-16 px-4 sm:px-6 lg:px-8">
+      {/* Logo */}
+      <Link to="/" className="flex items-center">
+        <div className="text-2xl font-bold text-purple-500">Elite Trader</div>
+      </Link>
 
-    <div className="bg-gray-900/50 backdrop-blur-md px-4 sm:px-6 lg:px-8 rounded-2xl">
-      <div className="flex items-center justify-between h-16">
-        {/* Logo */}
-        <Link to="/" className="flex items-center">
-          <div className="text-2xl font-bold text-purple-500">Elite Trader</div>
-        </Link>
-
-        {/* Desktop Navigation */}
-        <nav className="hidden md:flex space-x-8">
-          {navigation.map((item) => (
-            <Link
-              key={item.name}
-              to={item.href}
-              className={`text-sm font-medium transition-colors ${
-                location.pathname === item.href
-                  ? "text-purple-400"
-                  : "text-gray-300 hover:text-purple-400"
-              }`}
-            >
-              {item.name}
-            </Link>
-          ))}
-        </nav>
-
-        {/* Auth Buttons */}
-        <div className="hidden md:flex items-center space-x-4">
+      {/* Desktop Navigation */}
+      <div className="hidden md:flex space-x-8">
+        {navigation.map((item) => (
           <Link
-            to="/auth/login"
-            className="text-gray-300 hover:text-purple-400 font-medium transition-colors"
+            key={item.name}
+            to={item.href}
+            className={`text-sm font-medium transition-colors ${
+              location.pathname === item.href
+                ? "text-purple-400"
+                : "text-gray-300 hover:text-purple-400"
+            }`}
           >
-            Sign In
+            {item.name}
           </Link>
-          <Link
-            to="/signin"
-            className="bg-gradient-to-r from-purple-600 to-purple-700 hover:from-purple-500 hover:to-purple-600 text-white font-medium py-2 px-10 rounded-full text-lg transition-all duration-300 shadow-lg hover:shadow-purple-500/25"
-          >
-            Get Started
-          </Link>
-        </div>
-
-        {/* Mobile menu button */}
-        <button
-          onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-          className="md:hidden p-2 rounded-md text-gray-300 hover:bg-gray-800"
-        >
-          <svg
-            className="w-6 h-6"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth="2"
-              d={
-                mobileMenuOpen
-                  ? "M6 18L18 6M6 6l12 12"
-                  : "M4 6h16M4 12h16M4 18h16"
-              }
-            />
-          </svg>
-        </button>
+        ))}
       </div>
+
+      {/* Auth Buttons */}
+      <div className="hidden md:flex items-center space-x-4">
+        <Link
+          to="/auth/login"
+          className="text-gray-300 hover:text-purple-400 font-medium transition-colors"
+        >
+          Sign In
+        </Link>
+        <Link
+          to="/signin"
+          className="bg-gradient-to-r from-purple-600 to-purple-700 hover:from-purple-500 hover:to-purple-600 text-white font-medium py-2 px-10 rounded-full text-lg transition-all duration-300 shadow-lg hover:shadow-purple-500/25"
+        >
+          Get Started
+        </Link>
+      </div>
+
+      {/* Mobile menu button */}
+      <button
+        onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+        className="md:hidden p-2 rounded-md text-gray-300 hover:bg-gray-800"
+      >
+        <svg
+          className="w-6 h-6"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke="currentColor"
+        >
+          <path
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            strokeWidth="2"
+            d={
+              mobileMenuOpen
+                ? "M6 18L18 6M6 6l12 12"
+                : "M4 6h16M4 12h16M4 18h16"
+            }
+          />
+        </svg>
+      </button>
     </div>
 
     {/* Mobile menu */}
@@ -150,91 +133,69 @@ const PublicLayout = ({ children }) => {
       <main className="pt-16">{children}</main>
 
       {/* Footer */}
-      <footer className="bg-gray-950 text-white py-16 border-t border-gray-800">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
-            <div className="col-span-1 md:col-span-2">
-              <div className="text-2xl font-bold text-purple-500 mb-4">Elite Trader</div>
-              <p className="text-gray-400 mb-6 max-w-md">
-                The premier cryptocurrency trading platform for professionals and beginners alike. Join thousands of
-                successful traders using our advanced AI-powered tools.
-              </p>
-              <div className="flex space-x-4">
-                <a href="#" className="bg-gray-800 hover:bg-purple-600 p-3 rounded-full transition-colors">
-                  <Facebook className="w-5 h-5" />
-                </a>
-                <a href="#" className="bg-gray-800 hover:bg-purple-600 p-3 rounded-full transition-colors">
-                  <Twitter className="w-5 h-5" />
-                </a>
-                <a href="#" className="bg-gray-800 hover:bg-purple-600 p-3 rounded-full transition-colors">
-                  <Instagram className="w-5 h-5" />
-                </a>
-                <a href="#" className="bg-gray-800 hover:bg-purple-600 p-3 rounded-full transition-colors">
-                  <Youtube className="w-5 h-5" />
-                </a>
-              </div>
+      <footer className="bg-gray-950 text-white py-12 border-t border-gray-800">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 items-center">
+          {/* Logo & Social Links */}
+          <div className="md:col-span-2 flex flex-col items-center md:items-start">
+            <div className="text-2xl font-bold text-purple-500 mb-2">
+              Elite Trader
             </div>
-
-            <div>
-              <h3 className="text-lg font-semibold mb-4 text-white">Platform</h3>
-              <ul className="space-y-2">
-                <li>
-                  <Link to="/about" className="text-gray-400 hover:text-purple-400 transition-colors">
-                    About Us
-                  </Link>
-                </li>
-                <li>
-                  <Link to="/pricing" className="text-gray-400 hover:text-purple-400 transition-colors">
-                    Pricing
-                  </Link>
-                </li>
-                <li>
-                  <Link to="/contact" className="text-gray-400 hover:text-purple-400 transition-colors">
-                    Contact
-                  </Link>
-                </li>
-                <li>
-                  <a href="#" className="text-gray-400 hover:text-purple-400 transition-colors">
-                    Help Center
-                  </a>
-                </li>
-              </ul>
-            </div>
-
-            <div>
-              <h3 className="text-lg font-semibold mb-4 text-white">Legal</h3>
-              <ul className="space-y-2">
-                <li>
-                  <a href="#" className="text-gray-400 hover:text-purple-400 transition-colors">
-                    Privacy Policy
-                  </a>
-                </li>
-                <li>
-                  <a href="#" className="text-gray-400 hover:text-purple-400 transition-colors">
-                    Terms of Service
-                  </a>
-                </li>
-                <li>
-                  <a href="#" className="text-gray-400 hover:text-purple-400 transition-colors">
-                    Risk Disclosure
-                  </a>
-                </li>
-                <li>
-                  <a href="#" className="text-gray-400 hover:text-purple-400 transition-colors">
-                    Compliance
-                  </a>
-                </li>
-              </ul>
+            <p className="text-gray-400 mb-4 text-center md:text-left max-w-sm">
+              The premier cryptocurrency trading platform for professionals and beginners alike.
+            </p>
+            <div className="flex space-x-4">
+              <a href="#" className="bg-gray-800 hover:bg-purple-600 p-2 rounded-full transition-colors">
+                <Facebook className="w-4 h-4" />
+              </a>
+              <a href="#" className="bg-gray-800 hover:bg-purple-600 p-2 rounded-full transition-colors">
+                <Twitter className="w-4 h-4" />
+              </a>
+              <a href="#" className="bg-gray-800 hover:bg-purple-600 p-2 rounded-full transition-colors">
+                <Instagram className="w-4 h-4" />
+              </a>
+              <a href="#" className="bg-gray-800 hover:bg-purple-600 p-2 rounded-full transition-colors">
+                <Youtube className="w-4 h-4" />
+              </a>
             </div>
           </div>
 
-          <div className="border-t border-gray-800 mt-12 pt-8 text-center">
-            <p className="text-gray-400 text-sm">
-              © 2025 Elite Trader Inc. All rights reserved. Licensed and regulated financial services.
-            </p>
+          {/* Platform Links */}
+          <div className="flex flex-col items-center md:items-start">
+            <h3 className="text-lg font-semibold mb-3 text-white">Platform</h3>
+            <ul className="space-y-2 text-center md:text-left">
+              <li>
+                <Link to="/about" className="text-gray-400 hover:text-purple-400 transition-colors text-sm">
+                  About Us
+                </Link>
+              </li>
+              <li>
+                <Link to="/pricing" className="text-gray-400 hover:text-purple-400 transition-colors text-sm">
+                  Pricing
+                </Link>
+              </li>
+              <li>
+                <Link to="/contact" className="text-gray-400 hover:text-purple-400 transition-colors text-sm">
+                  Contact
+                </Link>
+              </li>
+              <li>
+                <a href="#" className="text-gray-400 hover:text-purple-400 transition-colors text-sm">
+                  Help Center
+                </a>
+              </li>
+            </ul>
           </div>
         </div>
-      </footer>
+
+        {/* Copyright */}
+        <div className="border-t border-gray-800 mt-8 pt-6 text-center">
+          <p className="text-gray-400 text-xs">
+            © 2025 Elite Trader Inc. All rights reserved.
+          </p>
+        </div>
+      </div>
+    </footer>
     </div>
   )
 }
