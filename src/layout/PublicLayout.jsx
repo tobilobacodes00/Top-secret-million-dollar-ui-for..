@@ -26,7 +26,11 @@ const PublicLayout = ({ children }) => {
     <div className="flex items-center justify-between h-16 px-4 sm:px-6 lg:px-8">
       {/* Logo */}
       <Link to="/" className="flex items-center">
-        <div className="text-2xl font-bold text-purple-500">Elite Trader</div>
+        <div className="flex items-center space-x-2">
+          <img src="/Logo.png" alt="Elite Trader Logo" className="w-8 h-8" />
+          <span className="text-2xl font-bold text-purple-500">Elite Trader</span>
+        </div>
+
       </Link>
 
       {/* Desktop Navigation */}
@@ -138,9 +142,11 @@ const PublicLayout = ({ children }) => {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 items-center">
           {/* Logo & Social Links */}
           <div className="md:col-span-2 flex flex-col items-center md:items-start">
-            <div className="text-2xl font-bold text-purple-500 mb-2">
-              Elite Trader
+            <div className="flex items-center space-x-2 mb-2">
+              <img src="/Logo.png" alt="Elite Trader Logo" className="w-8 h-8" />
+              <span className="text-2xl font-bold text-purple-500">Elite Trader</span>
             </div>
+
             <p className="text-gray-400 mb-4 text-center md:text-left max-w-sm">
               The premier cryptocurrency trading platform for professionals and beginners alike.
             </p>

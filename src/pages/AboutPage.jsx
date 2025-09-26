@@ -149,7 +149,7 @@ const AboutPage = () => {
                     viewport={{ once: true }}
                     className="text-center bg-gray-800/50 p-4 rounded-lg border border-gray-700/50"
                   >
-                    <div className="text-3xl font-bold text-purple-500 mb-1">K+</div>
+                    <div className="text-3xl font-bold text-purple-500 mb-1">10+</div>
                     <div className="text-gray-400 text-sm">Active Users</div>
                   </motion.div>
                 </div>
@@ -161,7 +161,7 @@ const AboutPage = () => {
                 viewport={{ once: true }}
               >
                 <img
-                  src="/Bitcoin P2P-amico.svg"
+                  src="/Logo.png"
                   alt="Elite Trader mission visualization"
                   className="w-full h-auto rounded-lg shadow-lg"
                 />

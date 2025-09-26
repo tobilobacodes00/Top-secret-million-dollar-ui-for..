@@ -194,12 +194,7 @@ export default function TradingPlatformLandingPage() {
                     <span className="text-gray-300"> 24/7 automated trading</span>
                   </div>
                 </div>
-                <Link
-                  to="/signin">
-                  <button className="bg-gradient-to-r from-purple-600 to-purple-700 hover:from-purple-500 hover:to-purple-600 text-white font-medium py-4 px-12 rounded-full text-lg transition-all duration-300 shadow-lg hover:shadow-purple-500/25">
-                    Get Started Free
-                  </button>
-                </Link>
+               
               </motion.div>
             </div>
           </div>
@@ -428,14 +423,14 @@ export default function TradingPlatformLandingPage() {
           <div className="absolute top-16 right-8 w-3 h-20 bg-purple-400/15 -rotate-12 blur-sm"></div>
          
           <div className="max-w-6xl mx-auto relative z-10">
-            <div className="grid lg:grid-cols-2 gap-12 items-center">
+            <div className="grid lg:grid-cols-2 gap-12 items-center mx-auto relative z-10">
               <motion.div
                 initial={{ opacity: 0, y: 60 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, ease: "easeOut" }}
                 viewport={{ once: true, margin: "-100px" }}
               >
-                <h2 className="text-2xl lg:text-3xl font-bold text-white mb-8 mx-auto">
+                <h2 className="text-2xl lg:text-3xl font-bold text-white mb-8 text-center">
                   Why <span className="text-purple-400">Choose Elite Trader</span>
                 </h2>
                 <motion.div
@@ -461,12 +456,7 @@ export default function TradingPlatformLandingPage() {
                   proven track record, cutting-edge technology, and commitment to security make us the preferred choice
                   for both novice and experienced traders looking to maximize their returns in the digital asset space.
                 </p>
-                <Link
-                  to="/signin">
-                  <button className="bg-gradient-to-r from-purple-600 to-purple-700 hover:from-purple-500 hover:to-purple-600 text-white font-medium py-4 px-12 rounded-full text-lg transition-all duration-300 shadow-lg hover:shadow-purple-500/25">
-                    Create Account
-                  </button>
-                </Link>
+                
               </motion.div>
               <motion.div
                 initial={{ opacity: 0, y: 60 }}
