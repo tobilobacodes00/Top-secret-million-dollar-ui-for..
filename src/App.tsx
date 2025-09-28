@@ -4,8 +4,9 @@ import PricingPage from './pages/PricingPage'
 import ContactPage from './pages/ContactPage'
 import Error404Page from './pages/Error404Page'
 import { Routes, Route } from "react-router-dom"
+import { FC } from 'react'
  
-const App = () => {
+const App: FC = () => {
   return ( 
     <>
     <Routes>

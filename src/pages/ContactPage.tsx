@@ -15,7 +15,7 @@ const ContactPage = () => {
   const [showSuccessMessage, setShowSuccessMessage] = useState(false)
   const [loading, setLoading] = useState(false) // 🔥 Loader state
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
     setLoading(true) // Start loader
 
@@ -43,7 +43,7 @@ const ContactPage = () => {
     }
   }
 
-  const handleChange = (e) => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     setFormData({
       ...formData,
       [e.target.name]: e.target.value,

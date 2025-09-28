@@ -21,11 +21,20 @@ const staggerContainer = {
   }
 }
 
+interface CryptoItem {
+  id: string;
+  name: string;
+  symbol: string;
+  price: number;
+  change: number;
+  volume: number;
+}
+
 export default function TradingPlatformLandingPage() {
-  const [cryptoData, setCryptoData] = useState([])
-  const [loading, setLoading] = useState(true)
-  const [error, setError] = useState(null)
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
+  const [cryptoData, setCryptoData] = useState<CryptoItem[]>([])
+  const [loading, setLoading] = useState<boolean>(true)
+  const [error, setError] = useState<string | null>(null)
+  const [mobileMenuOpen, setMobileMenuOpen] = useState<boolean>(false)
 
   useEffect(() => {
     const fetchCryptoData = async () => {
@@ -42,7 +51,7 @@ export default function TradingPlatformLandingPage() {
 
         const data = await response.json()
 
-        const formattedData = data.map((crypto) => ({
+        const formattedData: CryptoItem[] = data.map((crypto: any) => ({
           id: crypto.id,
           name: crypto.name,
           symbol: crypto.symbol.toUpperCase(),
@@ -55,7 +64,11 @@ export default function TradingPlatformLandingPage() {
         setLoading(false)
       } catch (err) {
         console.error("Error fetching crypto data:", err)
-        setError(err.message)
+        if (err instanceof Error) {
+          setError(err.message)
+        } else {
+          setError("Unknown error")
+        }
         setLoading(false)
       }
     }
@@ -128,7 +141,6 @@ export default function TradingPlatformLandingPage() {
           </Link>
           <Link to="/about" className="w-full sm:w-auto">
             <button
-              variant="outline"
               className="w-full border border-purple-500 text-purple-500 hover:bg-purple-900/20 px-8 py-3 rounded-full text-lg bg-transparent font-semibold transition-colors"
             >
               Meet The Team
@@ -261,7 +273,9 @@ export default function TradingPlatformLandingPage() {
                           className="w-full h-full object-cover rounded-full p-1"
                           onError={(e) => {
                             e.currentTarget.style.display = 'none';
-                            e.currentTarget.parentElement.innerHTML = item.symbol.substring(0, 2).toUpperCase();
+                            if (e.currentTarget.parentElement) {
+                              e.currentTarget.parentElement.innerHTML = item.symbol.substring(0, 2).toUpperCase();
+                            }
                           }}
                         />
                       </div>
@@ -327,7 +341,9 @@ export default function TradingPlatformLandingPage() {
                           className="w-full h-full object-cover rounded-full p-1"
                           onError={(e) => {
                             e.currentTarget.style.display = 'none';
-                            e.currentTarget.parentElement.innerHTML = item.symbol.substring(0, 2).toUpperCase();
+                            if (e.currentTarget.parentElement) {
+                              e.currentTarget.parentElement.innerHTML = item.symbol.substring(0, 2).toUpperCase();
+                            }
                           }}
                         />
                       </div>

@@ -1,49 +1,53 @@
-"use client"
+"use client";
 
-import { useState, useEffect } from "react" // Import useEffect
-import { Link, useLocation } from "react-router-dom"
-import { Facebook, Twitter, Instagram, Youtube, Menu, X } from "lucide-react"
+import { useState, useEffect, ReactNode } from "react";
+import { Link, useLocation } from "react-router-dom";
+import { Menu, X } from "lucide-react";
 
-// --- NEW SCROLL TO TOP COMPONENT ---
-// This component automatically scrolls the window to the top whenever the route changes.
+// Props for layout
+interface PublicLayoutProps {
+  children: ReactNode;
+}
+
+// --- SCROLL TO TOP COMPONENT ---
 const ScrollToTop = () => {
   const { pathname } = useLocation();
 
   useEffect(() => {
-    // Scroll to the top of the document
     window.scrollTo(0, 0);
-  }, [pathname]); // Re-run effect whenever pathname changes
+  }, [pathname]);
 
   return null;
 };
-// -------------------------------------
+// -----------------------------
 
+// Type for navigation items
+interface NavItem {
+  name: string;
+  href: string;
+}
 
-const PublicLayout = ({ children }) => {
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
-  const location = useLocation()
+const PublicLayout = ({ children }: PublicLayoutProps) => {
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const location = useLocation();
 
-  const navigation = [
+  const navigation: NavItem[] = [
     { name: "Home", href: "/" },
     { name: "About", href: "/about" },
     { name: "Pricing", href: "/pricing" },
     { name: "Contact", href: "/contact" },
-  ]
+  ];
 
   // Handler to close the menu
   const closeMenu = () => setMobileMenuOpen(false);
 
   return (
     <div className="min-h-screen bg-black text-gray-300">
-      
-      {/* 1. SCROLL TO TOP COMPONENT PLACEMENT */}
       <ScrollToTop />
-      
-      {/* Header - Fixed to the top */}
+
+      {/* Header */}
       <header className="fixed top-6 left-1/2 -translate-x-1/2 z-50 w-[90%] max-w-7xl">
-        <div
-          className="rounded-2xl shadow-lg border border-white/10 relative overflow-hidden bg-gray-900/50 backdrop-blur-md"
-        >
+        <div className="rounded-2xl shadow-lg border border-white/10 relative overflow-hidden bg-gray-900/50 backdrop-blur-md">
           <div className="flex items-center justify-between h-16 px-4 sm:px-6 lg:px-8">
             {/* Logo */}
             <Link to="/" className="flex items-center">
@@ -86,11 +90,12 @@ const PublicLayout = ({ children }) => {
               </Link>
             </div>
 
-            {/* Mobile menu button (New Style) */}
+            {/* Mobile menu button */}
             <button
               onClick={() => setMobileMenuOpen(true)}
               className="md:hidden p-3 text-purple-600 hover:bg-purple-500 transition-all"
               aria-label="Open menu"
+              type="button"
             >
               <Menu className="w-6 h-6" />
             </button>
@@ -98,39 +103,35 @@ const PublicLayout = ({ children }) => {
         </div>
       </header>
 
-
-      {/* Mobile Menu - Slide-in from Right */}
-      {/* Overlay: fixed inset-0 to cover the whole screen, activated by mobileMenuOpen state */}
+      {/* Mobile Menu */}
       <div
         className={`fixed inset-0 z-[60] transition-opacity duration-300 md:hidden ${
           mobileMenuOpen ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"
         }`}
       >
-        {/* Backdrop (Click to close) */}
-        <div
-          className="absolute inset-0 bg-black/10 backdrop-blur-sm"
-          onClick={closeMenu}
-        />
+        {/* Backdrop */}
+        <div className="absolute inset-0 bg-black/10 backdrop-blur-sm" onClick={closeMenu} />
 
-        {/* Menu Panel - Slides In (Smaller, Minimalist) */}
+        {/* Menu Panel */}
         <div
           className={`fixed top-0 right-0 h-full w-[60%] max-w-xs bg-black border-l border-gray-800 shadow-lg p-4 transition-transform duration-500 ease-in-out transform ${
             mobileMenuOpen ? "translate-x-0" : "translate-x-full"
           }`}
-          onClick={(e) => e.stopPropagation()} // Prevent clicks inside the panel from closing it via the backdrop
+          onClick={(e) => e.stopPropagation()}
         >
-          {/* Close Button (X icon - Smaller) */}
+          {/* Close Button */}
           <div className="flex justify-end mb-6">
             <button
               onClick={closeMenu}
               className="p-2 rounded-full text-gray-300 hover:bg-gray-800 transition-colors"
               aria-label="Close menu"
+              type="button"
             >
               <X className="w-6 h-6 text-purple-400" />
             </button>
           </div>
 
-          {/* Navigation Links (Smaller, simpler) */}
+          {/* Navigation Links */}
           <nav className="flex flex-col space-y-1 border-b border-gray-800 pb-4">
             {navigation.map((item) => (
               <Link
@@ -148,7 +149,7 @@ const PublicLayout = ({ children }) => {
             ))}
           </nav>
 
-          {/* Auth Buttons (Mobile - Smaller, simpler) */}
+          {/* Auth Buttons */}
           <div className="mt-4 flex flex-col space-y-3">
             <Link
               to="/auth/login"
@@ -168,8 +169,7 @@ const PublicLayout = ({ children }) => {
         </div>
       </div>
 
-
-      {/* Main Content - Pushed down by the fixed header */}
+      {/* Main Content */}
       <main className="pt-28">{children}</main>
 
       {/* Footer */}
@@ -182,11 +182,9 @@ const PublicLayout = ({ children }) => {
                 <img src="/Logo.png" alt="Elite Trader Logo" className="w-8 h-8" />
                 <span className="text-2xl font-bold text-purple-500">Elite Trader</span>
               </div>
-
               <p className="text-gray-400 mb-4 text-center md:text-left max-w-sm">
                 The premier cryptocurrency trading platform for professionals and beginners alike.
               </p>
-             
             </div>
 
             {/* Platform Links */}
@@ -194,17 +192,26 @@ const PublicLayout = ({ children }) => {
               <h3 className="text-lg font-semibold mb-3 text-white">Platform</h3>
               <ul className="space-y-2 text-center md:text-left">
                 <li>
-                  <Link to="/about" className="text-gray-400 hover:text-purple-400 transition-colors text-sm">
+                  <Link
+                    to="/about"
+                    className="text-gray-400 hover:text-purple-400 transition-colors text-sm"
+                  >
                     About Us
                   </Link>
                 </li>
                 <li>
-                  <Link to="/pricing" className="text-gray-400 hover:text-purple-400 transition-colors text-sm">
+                  <Link
+                    to="/pricing"
+                    className="text-gray-400 hover:text-purple-400 transition-colors text-sm"
+                  >
                     Pricing
                   </Link>
                 </li>
                 <li>
-                  <Link to="/contact" className="text-gray-400 hover:text-purple-400 transition-colors text-sm">
+                  <Link
+                    to="/contact"
+                    className="text-gray-400 hover:text-purple-400 transition-colors text-sm"
+                  >
                     Contact
                   </Link>
                 </li>
@@ -228,7 +235,7 @@ const PublicLayout = ({ children }) => {
         </div>
       </footer>
     </div>
-  )
-}
+  );
+};
 
-export default PublicLayout
+export default PublicLayout;

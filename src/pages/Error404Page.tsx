@@ -8,7 +8,7 @@ export default function Error404Page() {
       <div className="text-center max-w-md mx-auto">
         {/* Large 404 Number */}
         <div className="mb-8 flex justify-center">
-          <h1 className="text-9xl font-bold text-purple-600 mb-2 tracking-tight">
+          <h1 className="text-11xl font-bold text-purple-600 mb-2 tracking-tight">
             <FuzzyText color="#9333ea" fontSize="clamp(2rem, 10vw, 10rem)">
               404
             </FuzzyText>
