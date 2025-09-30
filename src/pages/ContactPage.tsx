@@ -1,11 +1,12 @@
 "use client"
 
 import { Mail, Phone, MapPin, Clock, Send, XCircle } from "lucide-react"
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import PublicLayout from "../layout/PublicLayout"
 import emailjs from "@emailjs/browser"
 
 const ContactPage = () => {
+
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -14,6 +15,17 @@ const ContactPage = () => {
   })
   const [showSuccessMessage, setShowSuccessMessage] = useState(false)
   const [loading, setLoading] = useState(false) // 🔥 Loader state
+
+  // Success Message Auto-hide
+  useEffect(() => {
+    if (showSuccessMessage) {
+      const timer = setTimeout(() => {
+        setShowSuccessMessage(false)
+      }, 4000) // 4 seconds
+
+      return () => clearTimeout(timer) // cleanup if component unmounts early
+    }
+  }, [showSuccessMessage])
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()

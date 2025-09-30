@@ -263,7 +263,6 @@ export default function TradingPlatformLandingPage() {
               <div className="relative bg-gradient-to-br from-gray-800/80 via-gray-900/90 to-black/80 backdrop-blur-xl rounded-2xl overflow-hidden border border-gray-700/50 hover:border-purple-300/50 transition-colors duration-300">
                 <div className="absolute -inset-0.5 bg-gradient-to-r from-purple-500 to-purple-700 rounded-2xl blur-xl opacity-0 group-hover:opacity-20 transition-opacity duration-300"></div>
                 <div className="relative p-6">
-                  {/* Card content is fine, it's mostly centered or uses justify-between */}
                   <div className="flex items-center justify-between mb-4">
                     <div className="flex items-center space-x-3">
                       <div className="w-7 h-7 rounded-full bg-purple-600/30 flex items-center justify-center text-white font-bold text-sm">
@@ -297,7 +296,7 @@ export default function TradingPlatformLandingPage() {
                     </div>
                   </div>
                   <div className="mb-6">
-                    <div className="text-2xl font-bold text-white mb-1">
+                    <div className="text-3xl font-bold text-white mb-1">
                       ${item.price.toLocaleString(undefined, {
                         minimumFractionDigits: 2,
                         maximumFractionDigits: item.price > 1000 ? 2 : 4

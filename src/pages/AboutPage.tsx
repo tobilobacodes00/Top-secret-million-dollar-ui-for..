@@ -1,7 +1,6 @@
 "use client"
 
 import { motion } from "framer-motion"
-import { Link } from "react-router-dom"
 import { Shield, Users, TrendingUp, Award, Target, Zap } from "lucide-react"
 import PublicLayout from "../layout/PublicLayout"
 
